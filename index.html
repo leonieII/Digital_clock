@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Digital_Clock/stylesheet/style.css">
+    <title>Digital clock using JS</title>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <span id="Hrs">00</span>
+                <span>:</span>
+                <span id="min">00</span>
+                <span>:</span>
+                <span id="secs">00</span>
+
+            </div>
+        </div>
+        <div class="container1">
+            <span class="dayDisplay">day</span>
+            <span>,</span>
+            <span class="dateDisplay">date</span>
+            <span class="monthDisplay">month</span>
+            <span>,</span>
+            <span class="yearDisplay">year</span>
+        </div>
+    </div>
+
+    <script>
+        let Hrs = document.getElementById("Hrs");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("secs");
+
+        setInterval(() => {
+            let currentTime = new Date();
+            Hrs.innerHTML = String(currentTime.getHours()).padStart(2, '0');//adding leading zero to the hours 
+            min.innerHTML = String(currentTime.getMinutes()).padStart(2, '0');
+            secs.innerHTML = String(currentTime.getSeconds()).padStart(2, '0');
+            //mtlb total length 2 hogi agar one number h to uske aage ek zero lga dega 
+        }, 1000);
+
+        let dayDisplay = document.querySelector(".dayDisplay");
+        let dateDisplay = document.querySelector(".dateDisplay");
+        let monthDisplay = document.querySelector(".monthDisplay");
+        let yearDisplay = document.querySelector(".yearDisplay");
+
+        let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let monthNames = ["January", " February", "March ", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+        setInterval(() => {
+            let currentTime = new Date();
+            let dayIndex = currentTime.getDay();
+            let monthIndex = currentTime.getMonth();
+            dayDisplay.innerHTML = dayNames[dayIndex];
+            dateDisplay.innerHTML = String(currentTime.getDate()).padStart(2, '0');
+            monthDisplay.innerHTML = monthNames[monthIndex];
+            yearDisplay.innerHTML = String(currentTime.getFullYear()).padStart(4, '0');
+
+
+        }, 1000);
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
